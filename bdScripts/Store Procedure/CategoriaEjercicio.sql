@@ -1,6 +1,7 @@
+
 CREATE  PROCEDURE CategoriaEjercicioConsult(IN idCategoria INT)
 BEGIN
-    IF idCategoria IS NULL THEN
+    IF idCategoria = 0 THEN
         SELECT * FROM CategoriaEjercicio;
     ELSE
         SELECT * FROM CategoriaEjercicio WHERE IdCategoriaEjercicio = idCategoria;

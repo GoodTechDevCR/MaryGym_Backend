@@ -14,6 +14,7 @@ BEGIN
         WHEN 'Ejercicio' THEN SET columnaId = 'IdEjercicio';
         WHEN 'Servicio' THEN SET columnaId = 'IdServicio';
         WHEN 'Cobro' THEN SET columnaId = 'IdCobro';
+        WHEN 'Pago' THEN SET columnaId = 'IdPago';
         ELSE SET columnaId = NULL; -- Para manejar casos no esperados
     END CASE;
 

@@ -2,12 +2,12 @@ DELIMITER //
 
 CREATE PROCEDURE EjercicioConsult(IN ejercicioId INT)
 BEGIN
-    IF ejercicioId IS NOT NULL THEN
+    IF ejercicioId =0  THEN
         SELECT * FROM Ejercicio WHERE IdEjercicio = ejercicioId;
     ELSE
         SELECT * FROM Ejercicio;
     END IF;
-END //
+END//
 
 DELIMITER ;
 
