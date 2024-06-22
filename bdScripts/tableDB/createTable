@@ -1,0 +1,41 @@
+CREATE TABLE Usuario (
+  IdUsuario INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(255),
+  Apellido VARCHAR(255),
+  NombreUsuario VARCHAR(255) UNIQUE,
+  Password VARCHAR(255),
+  Telefono INT,
+  Correo VARCHAR(255),
+  Saldo DOUBLE,
+  Estado BOOLEAN,
+  FechaNacimiento DATE
+);
+
+CREATE TABLE CategoriaEjercicio (
+  IdCategoriaEjercicio INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(255)
+);
+
+CREATE TABLE Ejercicio (
+  IdEjercicio INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(255),
+  CategoriaId INT,
+  FOREIGN KEY (CategoriaId) REFERENCES CategoriaEjercicio(IdCategoriaEjercicio)
+);
+
+CREATE TABLE Servicio (
+  IdServicio INT AUTO_INCREMENT PRIMARY KEY,
+  NombreServicio VARCHAR(255),
+  PrecioServicio INT
+);
+
+CREATE TABLE Cobro (
+  IdCobro INT AUTO_INCREMENT PRIMARY KEY,
+  IdServicio INT,
+  IdUsuario INT,
+  MontoCobro INT,
+  FechaInicio DATE,
+  FechaFinal DATE,
+  FOREIGN KEY (IdServicio) REFERENCES Servicio(IdServicio),
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+);
