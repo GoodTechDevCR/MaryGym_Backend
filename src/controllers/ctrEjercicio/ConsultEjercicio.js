@@ -9,7 +9,7 @@ export const  consultEjercicio = async (req, res) => {
         const query = ejercicioId ? 'CALL EjercicioConsult(?)' : 'CALL EjercicioConsult(NULL)';
         const params = ejercicioId ? [ejercicioId] : [];
         const [rows] = await connection.execute(query, params);
-        res.json(rows);
+        res.json(rows[0]);
     } catch (error) {
         console.error('Error al consultar el ejercicio:', error);
         res.status(500).send('Error en el servidor');

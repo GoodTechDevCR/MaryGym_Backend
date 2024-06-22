@@ -10,14 +10,15 @@ END
 
 //
 
-CREATE DEFINER = `root`@`%` PROCEDURE CategoriaEjercicioCreate(IN NombreCatEje VARCHAR(255))
+create procedure CategoriaEjercicioCreate(IN NombreCatEje varchar(255))
 BEGIN
     INSERT INTO CategoriaEjercicio (Nombre) VALUES (NombreCatEje);
-END
+END;
 
 //
 
-CREATE DEFINER = `root`@`%` PROCEDURE CategoriaEjercicioDelete(IN idCategoria INT)
+create procedure CategoriaEjercicioDelete(IN idCategoria int)
 BEGIN
     DELETE FROM CategoriaEjercicio WHERE IdCategoriaEjercicio = idCategoria;
-END
+END;
+
