@@ -12,10 +12,10 @@ const router = express.Router();
 router.post('/', createUsuario);
 
 // Router para Eliminar Usuario
-router.delete('/:idUsuario', deleteUsuario);
+router.delete('/:id', deleteUsuario);
 
 // Router para Consultar Usuario
-router.get('/:idUsuario?', consultUsuario);
+router.get('/:id?', consultUsuario);
 
 // Router para Cambiar estado del Usuario
 router.put('/estado', ChangeEstadoUsuario);

@@ -11,10 +11,10 @@ const router = express.Router();
 router.post('/', createCobro);
 
 // Router para Eliminar Cobro
-router.delete('/:idCobro', deleteCobro);
+router.delete('/:id', deleteCobro);
 
 // Router para Consultar Cobro
-router.get('/:idCobro?', consultCobro);
+router.get('/:id?', consultCobro);
 
 // Exporta el router
 export default router;

@@ -11,10 +11,10 @@ const router = express.Router();
 router.post('/', createServicio);
 
 // Router para Eliminar Servicio
-router.delete('/:idServicio', deleteServicio);
+router.delete('/:id', deleteServicio);
 
 // Router para Consultar Servicio
-router.get('/:idServicio?', consultServicio);
+router.get('/:id?', consultServicio);
 
 // Exporta el router
 export default router;
