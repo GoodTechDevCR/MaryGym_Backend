@@ -8,13 +8,13 @@ import express from 'express';
 const router = express.Router();
 
 // Router para Crear Servicio
-router.post('/servicio', createServicio);
+router.post('/', createServicio);
 
 // Router para Eliminar Servicio
-router.delete('/servicio/:idServicio', deleteServicio);
+router.delete('/:idServicio', deleteServicio);
 
 // Router para Consultar Servicio
-router.get('/servicio/:idServicio?', consultServicio);
+router.get('/:idServicio?', consultServicio);
 
 // Exporta el router
 export default router;

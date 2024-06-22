@@ -9,16 +9,16 @@ import express from 'express';
 const router = express.Router();
 
 // Router para Crear Usuario
-router.post('/usuario', createUsuario);
+router.post('/', createUsuario);
 
 // Router para Eliminar Usuario
-router.delete('/usuario/:idUsuario', deleteUsuario);
+router.delete('/:idUsuario', deleteUsuario);
 
 // Router para Consultar Usuario
-router.get('/usuario/:idUsuario?', consultUsuario);
+router.get('/:idUsuario?', consultUsuario);
 
 // Router para Cambiar estado del Usuario
-router.put('/usuario/estado', ChangeEstadoUsuario);
+router.put('/estado', ChangeEstadoUsuario);
 
 // Exporta el router
 export default router;

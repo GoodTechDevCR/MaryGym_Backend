@@ -11,8 +11,6 @@ import RouterCobros from "../src/routers/rtCobro/RouterCobro.js";
 const app = express();
 app.use(express.json());
 
-// Middleware para analizar cuerpos de solicitud JSON
-app.use(express.json());
 
 app.listen(PORT, () => {
     console.log("Server on port ",PORT);
@@ -32,7 +30,10 @@ app.get('/ping', async (req, res) => {
     }
 });
 
-
+// Rutas
+app.use('/usuario', RouterUsuarios);
+app.use('/cobro', RouterCobros);
+app.use('/servicio', RouterServicios);
 app.use('/ejercicio', RouterEjercicio);
 app.use('/catEje', RouterCatEje)
 
@@ -41,7 +42,4 @@ app.get('/create', async (req, res) => {
     res.json(result)
   })
 
-// Rutas
-app.use(RouterUsuarios);
-app.use(RouterServicios);
-app.use(RouterCobros);
+

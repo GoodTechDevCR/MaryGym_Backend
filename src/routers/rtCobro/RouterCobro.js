@@ -8,13 +8,13 @@ import express from 'express';
 const router = express.Router();
 
 // Router para Crear Cobro
-router.post('/cobro', createCobro);
+router.post('/', createCobro);
 
 // Router para Eliminar Cobro
-router.delete('/cobro/:idCobro', deleteCobro);
+router.delete('/:idCobro', deleteCobro);
 
 // Router para Consultar Cobro
-router.get('/cobro/:idCobro?', consultCobro);
+router.get('/:idCobro?', consultCobro);
 
 // Exporta el router
 export default router;
