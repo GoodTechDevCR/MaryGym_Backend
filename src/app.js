@@ -35,7 +35,7 @@ app.use('/usuario', RouterUsuarios);
 app.use('/cobro', RouterCobros);
 app.use('/servicio', RouterServicios);
 app.use('/ejercicio', RouterEjercicio);
-app.use('/catEje', RouterCatEje)
+app.use('/catEje', RouterCatEje); 
 
 app.get('/create', async (req, res) => {
     const result = await MySqlConnection.query('INSERT INTO user(name) VALUES ("samir")')
