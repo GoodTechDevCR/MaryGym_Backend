@@ -39,3 +39,30 @@ CREATE TABLE Cobro (
   FOREIGN KEY (IdServicio) REFERENCES Servicio(IdServicio),
   FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
+
+
+create table Pago(
+    IdPago int auto_increment PRIMARY KEY,
+    IdUsuario int,
+    Monto FLOAT,
+    FechaPago DATE,
+    IdTipoTran int,
+    foreign key (IdTipoTran) references TipoTransaccion(IdTipoTran) ,
+    foreign key (IdUsuario) references usuario(IdUsuario)
+);
+
+Create table TipoTransaccion(
+    IdTipoTran int auto_increment primary key ,
+    TipoTran nvarchar(255)
+);
+
+INSERT INTO TipoTransaccion (TipoTran) VALUES
+('Abono'),
+('Membresia Mensual'),
+('Membresia Semanal'),
+('Membresia un dia'),
+('Precio Especial');
+
+
+
+

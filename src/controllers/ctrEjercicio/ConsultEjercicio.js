@@ -1,7 +1,7 @@
 import {MySqlConnection} from "../../database/DBConnection.js";
 
 export const  consultEjercicio = async (req, res) => {
-    const ejercicioId = req.params.id || null;
+    const ejercicioId = req.params.id || 0;
     let connection;
 
     try {
