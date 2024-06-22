@@ -1,9 +1,12 @@
 import express from 'express';
-import { MySqlConnection } from './database/DBConnection.js'; // Asegúrate de usar la ruta correcta y la extensión .js
+import { MySqlConnection } from './database/DBConnection.js';
 import { PORT } from './config/ConfiguracionInicial.js';
 
+import RouterEjercicio from "./routers/rtEjercicio/RouterEjercicio.js";
+import RouterCatEje from "./routers/rtCategoriaEjercicio/RouterCatEje.js";
 
 const app = express();
+app.use(express.json());
 
 app.listen(PORT, () => {
     console.log("Server on port ",PORT);
@@ -24,7 +27,6 @@ app.get('/ping', async (req, res) => {
 });
 
 
-app.get('/create', async (req, res) => {
-    const result = await MySqlConnection.query('INSERT INTO user(name) VALUES ("samir")')
-    res.json(result)
-  })
+app.use('/ejercicio', RouterEjercicio);
+app.use('/catEje', RouterCatEje)
+
