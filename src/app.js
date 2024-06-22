@@ -1,6 +1,6 @@
 import express from 'express';
 import { MySqlConnection } from './database/DBConnection.js'; // Asegúrate de usar la ruta correcta y la extensión .js
-import { PORT } from './config.js';
+import { PORT } from './config/ConfiguracionInicial.js';
 
 
 const app = express();
@@ -25,6 +25,6 @@ app.get('/ping', async (req, res) => {
 
 
 app.get('/create', async (req, res) => {
-    const result = await MySqlConnection.query('INSERT INTO user(name) VALUES ("John")')
+    const result = await MySqlConnection.query('INSERT INTO user(name) VALUES ("samir")')
     res.json(result)
   })
