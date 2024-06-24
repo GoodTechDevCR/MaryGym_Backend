@@ -19,7 +19,6 @@ app.use(cors({
     credentials: true,
 }));
 
-
 app.listen(PORT, () => {
     console.log("Server on port ",PORT);
 });
@@ -46,6 +45,3 @@ app.use('/ejercicio', RouterEjercicio);
 app.use('/catEje', RouterCatEje);
 app.use('/tipoTran', RouterTipoTransaccion);
 app.use('/pago', RouterPago);
-
-
-
