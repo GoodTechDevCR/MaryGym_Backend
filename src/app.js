@@ -1,6 +1,7 @@
 import express from 'express';
 import { MySqlConnection } from './database/DBConnection.js';
 import { PORT } from './config/ConfiguracionInicial.js';
+import cors from 'cors';
 
 import RouterEjercicio from "./routers/rtEjercicio/RouterEjercicio.js";
 import RouterCatEje from "./routers/rtCategoriaEjercicio/RouterCatEje.js";
@@ -12,6 +13,11 @@ import RouterPago from "./routers/rtPago/RouterPago.js";
 
 const app = express();
 app.use(express.json());
+// Permitir solicitudes desde el origen de tu frontend
+app.use(cors({
+    origin: 'http://localhost:3000', // Reemplaza con la URL de tu frontend
+    credentials: true,
+}));
 
 
 app.listen(PORT, () => {

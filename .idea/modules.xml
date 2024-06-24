@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MaryGym_Backend.iml" filepath="$PROJECT_DIR$/.idea/MaryGym_Backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mary_frontend/.idea/mary_frontend.iml" filepath="$PROJECT_DIR$/../mary_frontend/.idea/mary_frontend.iml" />
     </modules>
   </component>
 </project>
