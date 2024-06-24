@@ -3,7 +3,6 @@ import { MySqlConnection } from './database/DBConnection.js';
 import { PORT } from './config/ConfiguracionInicial.js';
 import cors from 'cors';
 
-
 import RouterEjercicio from "./routers/rtEjercicio/RouterEjercicio.js";
 import RouterCatEje from "./routers/rtCategoriaEjercicio/RouterCatEje.js";
 import RouterUsuarios  from "../src/routers/rtUsuario/RouterUsuario.js";
@@ -46,6 +45,3 @@ app.use('/ejercicio', RouterEjercicio);
 app.use('/catEje', RouterCatEje);
 app.use('/tipoTran', RouterTipoTransaccion);
 app.use('/pago', RouterPago);
-
-
-
