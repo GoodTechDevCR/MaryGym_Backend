@@ -11,6 +11,11 @@ CREATE TABLE Usuario (
   FechaNacimiento DATE
 );
 
+//para el manejo de numeros de telefono
+ALTER TABLE Usuario MODIFY COLUMN Telefono NVARCHAR(255);
+
+//////////
+
 CREATE TABLE CategoriaEjercicio (
   IdCategoriaEjercicio INT AUTO_INCREMENT PRIMARY KEY,
   Nombre VARCHAR(255)

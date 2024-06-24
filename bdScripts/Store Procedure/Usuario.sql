@@ -7,17 +7,21 @@ DELIMITER //
 CREATE PROCEDURE UsuarioCreate(
 IN p_Nombre VARCHAR(255),
 IN p_Apellido VARCHAR(255),
-IN p_NombreUsuario VARCHAR(255),
 IN p_Password VARCHAR(255),
-IN p_Telefono INT,
+IN p_Telefono VARCHAR(255),
 IN p_Correo VARCHAR(255),
 IN p_Saldo DOUBLE,
 IN p_Estado TINYINT,
 IN p_FechaNacimiento DATE
 )
 BEGIN
-INSERT INTO Usuario (Nombre, Apellido, NombreUsuario, Password, Telefono, Correo, Saldo, Estado, FechaNacimiento)
-VALUES (p_Nombre, p_Apellido, p_NombreUsuario, p_Password, p_Telefono, p_Correo, p_Saldo, p_Estado, p_FechaNacimiento);
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+    GET DIAGNOSTICS CONDITION 1 @sqlstate = RETURNED_SQLSTATE, @errno = MYSQL_ERRNO, @text = MESSAGE_TEXT;
+    SELECT CONCAT('Error: ', @errno, ' - ', @text) AS ErrorMessage;
+END;
+INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Saldo, Estado, FechaNacimiento)
+VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Saldo, p_Estado, p_FechaNacimiento);
 END //
 
 DELIMITER ;
