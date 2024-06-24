@@ -17,28 +17,35 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE PagoConsult(
-    IN p_IdPago INT
-)
+create procedure PagoConsult(IN p_IdPago int)
 BEGIN
     IF p_IdPago = 0 THEN
         SELECT
             IdPago,
-            IdUsuario,
+            Pago.IdUsuario,
+            CONCAT(u.Nombre, ' ' ,u.Apellido) as NombreUsuario,
             Monto,
             FechaPago,
-            IdTipoTran
-        FROM Pago;
+            Pago.IdTipoTran,
+            tt.TipoTran
+        FROM Pago
+        inner join tipotransaccion tt on Pago.IdTipoTran = tt.IdTipoTran
+        inner join usuario u on Pago.IdUsuario = u.IdUsuario;
     ELSE
         SELECT
             IdPago,
-            IdUsuario,
+            Pago.IdUsuario,
+            CONCAT(u.Nombre, ' ' ,u.Apellido) as NombreUsuario,
             Monto,
             FechaPago,
-            IdTipoTran
-        FROM Pago WHERE IdPago = p_IdPago;
+            Pago.IdTipoTran,
+            tt.TipoTran
+        FROM Pago
+        inner join tipotransaccion tt on Pago.IdTipoTran = tt.IdTipoTran
+        inner join usuario u on Pago.IdUsuario = u.IdUsuario
+        WHERE IdPago = p_IdPago;
     END IF;
-END //
+END; //
 
 DELIMITER ;
 
