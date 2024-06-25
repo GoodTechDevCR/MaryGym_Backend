@@ -96,3 +96,12 @@ END //
 DELIMITER ;
 
 --------------------------------------------------------------
+DELIMITER //
+
+CREATE PROCEDURE UsuarioByCorreo (IN correoBrindado VARCHAR(255))
+BEGIN
+    SELECT * FROM usuario
+    WHERE Correo = correoBrindado;
+END //
+
+DELIMITER ;
