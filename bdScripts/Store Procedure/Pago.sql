@@ -7,9 +7,23 @@ CREATE PROCEDURE PagoCreate(
     IN p_IdTipoTran INT
 )
 BEGIN
+    DECLARE total_pagos FLOAT;
+
+    -- Insertar el pago
     INSERT INTO Pago (IdUsuario, Monto, FechaPago, IdTipoTran)
     VALUES (p_IdUsuario, p_Monto, p_FechaPago, p_IdTipoTran);
-END //
+
+    -- Calcular la suma de todos los pagos del usuario
+    SELECT SUM(Monto) INTO total_pagos
+    FROM Pago
+    WHERE IdUsuario = p_IdUsuario;
+
+    -- Actualizar el saldo del usuario
+    UPDATE Usuario
+    SET Saldo = total_pagos
+    WHERE IdUsuario = p_IdUsuario;
+END
+ //
 
 DELIMITER ;
 

@@ -61,6 +61,8 @@ Create table TipoTransaccion(
     TipoTran nvarchar(255)
 );
 
+alter table tipotransaccion add COLUMN Monto INT;
+
 INSERT INTO TipoTransaccion (TipoTran) VALUES
 ('Abono'),
 ('Membresia Mensual'),
