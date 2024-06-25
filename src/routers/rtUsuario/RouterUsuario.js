@@ -1,10 +1,10 @@
-// RouterUsuario.js 
+// RouterUsuario.js
 import { createUsuario } from '../../controllers/ctrUsuario/CreateUsuario.js';
 import { deleteUsuario } from '../../controllers/ctrUsuario/DeleteUsuario.js';
 import { consultUsuario } from '../../controllers/ctrUsuario/ConsultUsuario.js';
 import { ChangeEstadoUsuario } from '../../controllers/ctrUsuario/ChangeEstadoUsuario.js';
 
-// Crea Instancia de router para exportalo 
+// Crea Instancia de router para exportalo
 import express from 'express';
 const router = express.Router();
 
@@ -19,6 +19,7 @@ router.get('/:id?', consultUsuario);
 
 // Router para Cambiar estado del Usuario
 router.put('/estado', ChangeEstadoUsuario);
+
 
 // Exporta el router
 export default router;
