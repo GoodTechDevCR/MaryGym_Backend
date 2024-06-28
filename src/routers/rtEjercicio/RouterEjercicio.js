@@ -8,7 +8,7 @@ import {createEjercicio} from "../../controllers/ctrEjercicio/CreateEjercicio.js
 
 import {updateEjercicio} from "../../controllers/ctrEjercicio/UpdateEjercicio.js";
 
-import {consultEjercicioPorCategoria} from "../../controllers/ctrEjercicio/consultEjercicioPorCategoria.js";
+import {consultEjercicioPorCategoria} from "../../controllers/ctrEjercicio/ConsultEjercicioPorCategoria.js";
 
 
 const router = Router();
