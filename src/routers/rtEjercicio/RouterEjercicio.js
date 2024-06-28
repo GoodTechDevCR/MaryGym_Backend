@@ -16,7 +16,7 @@ const router = Router();
 //solicitud tipo get para obtener los ejercicios
 router.get('/:id?', consultEjercicio);
 
-//solicitud tipo get para obtener las categorias de ejercicios
+//solicitud tipo get para obtener los ejercicios por categorias
 router.get('/ejercicioCat/:id?', consultEjercicioPorCategoria);
 
 //solicitud de tipo post para crear los ejercicios

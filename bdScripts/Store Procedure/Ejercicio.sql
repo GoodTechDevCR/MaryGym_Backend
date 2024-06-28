@@ -13,12 +13,12 @@ DELIMITER ;
 
 DELIMITER //
 create
-    definer = marygym@`%` procedure EjercicioConsultByCat(IN categoriaId int)
+    definer = marygym@`%` procedure EjercicioConsultByCat(IN catId int)
 BEGIN
-    IF categoriaId =0  THEN
+    IF catId =0  THEN
         SELECT * FROM Ejercicio;
     ELSE
-        SELECT * FROM Ejercicio WHERE CategoriaId = categoriaId;
+        SELECT * FROM Ejercicio WHERE CategoriaId = catId;
     END IF;
 END;
 DELIMITER ;
