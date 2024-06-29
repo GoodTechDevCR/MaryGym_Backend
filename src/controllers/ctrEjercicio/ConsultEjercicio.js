@@ -19,3 +19,5 @@ export const  consultEjercicio = async (req, res) => {
 }
 
 
+
+

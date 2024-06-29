@@ -17,7 +17,7 @@ const router = Router();
 router.get('/:id?', consultEjercicio);
 
 //solicitud tipo get para obtener los ejercicios por categorias
-router.get('/cat/:id?', consultEjercicioPorCategoria);
+router.get('/byCat/:id?', consultEjercicioPorCategoria);
 
 //solicitud de tipo post para crear los ejercicios
 router.post('/', createEjercicio);
