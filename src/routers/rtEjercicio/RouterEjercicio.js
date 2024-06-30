@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import {consultEjercicio} from "../../controllers/ctrEjercicio/ConsultEjercicio.js";
+import {consultEjercicio, consultEjercicioByCat} from "../../controllers/ctrEjercicio/ConsultEjercicio.js";
 
 import {deleteEjercicio} from "../../controllers/ctrEjercicio/DeleteEjercicio.js";
 
@@ -12,6 +12,9 @@ const router = Router();
 
 //solicitud tipo get para obtener los ejercicios
 router.get('/:id?', consultEjercicio);
+
+//solicitud tipo get para obtener los ejercicios por categoria
+router.get('/byCat/:id?', consultEjercicioByCat);
 
 //solicitud de tipo post para crear los ejercicios
 router.post('/', createEjercicio);
