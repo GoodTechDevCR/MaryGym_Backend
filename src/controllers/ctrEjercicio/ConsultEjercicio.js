@@ -20,7 +20,6 @@ export const consultEjercicio = async (req, res) => {
 }
 
 
-
 export const  consultEjercicioByCat = async (req, res) => {
         const { id } = req.params;
         const sql = 'CALL EjercicioConsultByCat(?)';
@@ -32,4 +31,3 @@ export const  consultEjercicioByCat = async (req, res) => {
         }
     };
     
-

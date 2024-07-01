@@ -8,6 +8,9 @@ import {createEjercicio} from "../../controllers/ctrEjercicio/CreateEjercicio.js
 
 import {updateEjercicio} from "../../controllers/ctrEjercicio/UpdateEjercicio.js";
 
+import {consultEjercicioPorCategoria} from "../../controllers/ctrEjercicio/ConsultEjercicioPorCategoria.js";
+
+
 const router = Router();
 
 //solicitud tipo get para obtener los ejercicios

@@ -12,6 +12,17 @@ BEGIN
 END;
 DELIMITER ;
 
+DELIMITER //
+create
+    definer = marygym@`%` procedure EjercicioConsultByCat(IN catId int)
+BEGIN
+    IF catId =0  THEN
+        SELECT * FROM Ejercicio;
+    ELSE
+        SELECT * FROM Ejercicio WHERE CategoriaId = catId;
+    END IF;
+END;
+DELIMITER ;
 
 DELIMITER //
 

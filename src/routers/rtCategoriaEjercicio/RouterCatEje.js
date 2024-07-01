@@ -13,6 +13,8 @@ const router = Router();
 //solicitud tipo get para obtener las categorias de ejercicios
 router.get('/:id?', consultCategoriaEjercicio);
 
+
+
 //solicitud de tipo post para crear las categorias deejercicios
 router.post('/', createCategoriaEjercicio);
 
