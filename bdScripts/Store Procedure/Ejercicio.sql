@@ -1,14 +1,15 @@
 DELIMITER //
 
-CREATE PROCEDURE EjercicioConsult(IN ejercicioId INT)
+CREATE DEFINER = `marygym`@`%` PROCEDURE EjercicioConsult(IN ejercicioId INT)
 BEGIN
-    IF ejercicioId =0  THEN
-        SELECT * FROM Ejercicio WHERE IdEjercicio = ejercicioId;
+    IF ejercicioId = 0 THEN
+        SELECT * FROM Ejercicio
+        ORDER BY Nombre;  -- Ordenar alfabéticamente de la A a la Z
     ELSE
-        SELECT * FROM Ejercicio;
+        SELECT * FROM Ejercicio
+        WHERE IdEjercicio = ejercicioId;
     END IF;
-END//
-
+END;
 DELIMITER ;
 
 DELIMITER //
