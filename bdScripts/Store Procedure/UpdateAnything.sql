@@ -15,6 +15,7 @@ BEGIN
         WHEN 'Servicio' THEN SET columnaId = 'IdServicio';
         WHEN 'Cobro' THEN SET columnaId = 'IdCobro';
         WHEN 'Pago' THEN SET columnaId = 'IdPago';
+        when 'ContactoEmergencia' then set columnaId = 'IdContEmer';
         ELSE SET columnaId = NULL; -- Para manejar casos no esperados
     END CASE;
 

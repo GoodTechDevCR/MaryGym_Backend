@@ -75,4 +75,15 @@ INSERT INTO TipoTransaccion (TipoTran) VALUES
 
 
 
+create table ContactoEmergencia(
+    IdContEmer int auto_increment PRIMARY KEY,
+    IdUsuario int,
+    Nombre nvarchar(255),
+    NumeroTelefono nvarchar(255),
+    Relacion nvarchar(64),
+    foreign key (IdUsuario) references usuario(IdUsuario)
+);
+
+
+
 
