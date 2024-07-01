@@ -52,8 +52,8 @@ export const buildPDF = async (jsonData, dataCallback, endCallback) => {
     ];
 
     // Prepara los datos para la tabla
-    const tableData = jsonData.funcionalidad.flatMap(funcionalidad => 
-        (funcionalidad.ejercicios || []).map(ejercicio => {
+    const tableData = jsonData.funcionalidades.flatMap(funcionalidades => 
+        (funcionalidades.ejercicios || []).map(ejercicio => {
             // Crea un objeto para cada fila de datos con los datos del ejercicio
             const row = {
                 nombreEjercicio: ejercicio.nombreEjercicio,
@@ -107,9 +107,9 @@ export const buildPDF = async (jsonData, dataCallback, endCallback) => {
     };
 
     // Imprime las tablas para cada funcionalidad
-    jsonData.funcionalidad.forEach((funcionalidad) => {
+    jsonData.funcionalidades.forEach((funcionalidades) => {
         // Datos de la tabla para esta funcionalidad
-        const tableData = (funcionalidad.ejercicios || []).map(ejercicio => {
+        const tableData = (funcionalidades.ejercicios || []).map(ejercicio => {
             // Crea un objeto para cada fila de datos con los datos del ejercicio
             const row = {
                 nombreEjercicio: ejercicio.nombreEjercicio,
@@ -123,7 +123,7 @@ export const buildPDF = async (jsonData, dataCallback, endCallback) => {
         });
 
         // Llamada a la función de tabla
-        drawTable(`Rutina de ejercicios para la funcionalidad: ${funcionalidad.nombreFuncionalidad}`, tableData);
+        drawTable(`Rutina de ejercicios para la funcionalidad: ${funcionalidades.nombreFuncionalidad}`, tableData);
     });
 
     // Finaliza el documento

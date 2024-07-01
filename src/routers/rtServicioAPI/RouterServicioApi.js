@@ -13,12 +13,13 @@ router.post("/generarPDF", (req, res) => {
         return res.status(400).json({ error: "El campo usuario es requerido." });
     }
 
-    // Crea una instancia de stream para la respuesta
+    // Configura la respuesta para enviar el PDF
     res.writeHead(200, {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename=rutina_${usuario}.pdf`,  
+        "Content-Disposition": `inline; filename=rutina_${usuario}.pdf`,  // "inline" para visualizar en el navegador
     });
 
+    // Genera el PDF y lo envía al cliente
     buildPDF(
         jsonData,
         (data) => res.write(data),
