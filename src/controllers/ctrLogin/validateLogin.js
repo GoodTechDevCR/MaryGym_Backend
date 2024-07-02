@@ -6,6 +6,8 @@ export const validateLogin = async (req, res) => {
     if (!usuario || !contrasena) {
         return res.status(400).json({ alert: 'error', message: 'Usuario y contraseña son requeridos' });
     }
+    // Log para mostrar los datos recibidos del cliente
+    console.log('Datos recibidos del cliente:', { usuario, contrasena });
 
     let connection;
 
@@ -18,7 +20,7 @@ export const validateLogin = async (req, res) => {
         await connection.query(query, params);
 
         // Obtener el resultado del procedimiento almacenado
-        const resultQuery = 'SELECT @OutResultCode AS result_code';
+        const resultQuery = 'SELECT @OutResultCode';
         const [rows] = await connection.query(resultQuery);
 
         // Obtener el resultado del código de resultado
@@ -27,7 +29,7 @@ export const validateLogin = async (req, res) => {
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
-                res.status(200).json({ alert: 'success', message: 'Login exitoso' });
+                res.status(200).json({ alert: 'success', message: 'Login exitosoppp' });
                 break;
             case 506:
                 res.status(401).json({ alert: 'error', message: 'El uAAAAAAAAAAaaao no existe' });
