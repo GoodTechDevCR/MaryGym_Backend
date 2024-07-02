@@ -30,7 +30,7 @@ export const validateLogin = async (req, res) => {
                 res.status(200).json({ alert: 'success', message: 'Login exitoso' });
                 break;
             case 506:
-                res.status(401).json({ alert: 'error', message: 'El usuario no existe' });
+                res.status(401).json({ alert: 'error', message: 'El uAAAAAAAAAAaaao no existe' });
                 break;
             case 507:
                 res.status(401).json({ alert: 'error', message: 'La contraseña es incorrecta' });
