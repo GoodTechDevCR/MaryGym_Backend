@@ -11,6 +11,8 @@ import RouterCobros from "../src/routers/rtCobro/RouterCobro.js";
 import RouterTipoTransaccion from "./routers/rtTipoTransaccion/RouterTipoTransaccion.js";
 import RouterPago from "./routers/rtPago/RouterPago.js";
 import RouterLogin from "./routers/rtLogin/RouterLogin.js";
+import RouterServicioApi from "./routers/rtServicioAPI/RouterServicioApi.js"
+
 
 const app = express();
 app.use(express.json());
@@ -47,3 +49,4 @@ app.use('/catEje', RouterCatEje);
 app.use('/tipoTran', RouterTipoTransaccion);
 app.use('/pago', RouterPago);
 app.use('/login', RouterLogin);
+app.use('/servicioAPI', RouterServicioApi);
