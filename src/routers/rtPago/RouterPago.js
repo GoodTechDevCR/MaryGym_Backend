@@ -15,7 +15,7 @@ router.post('/', createPago);
 // Router para Eliminar pago
 router.delete('/:id', deletePago);
 
-// Router para Consultar pago
+// Router para Consultar pagos o los pagos de un usuario (idUsuario)
 router.get('/:id?', consultPago);
 
 //router para hacer un update de apgo
