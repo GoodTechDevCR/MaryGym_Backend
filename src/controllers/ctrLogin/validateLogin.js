@@ -10,24 +10,19 @@ export const validateLogin = async (req, res) => {
     console.log('Datos recibidos del cliente:', { usuario, contrasena });
 
     try {
-        // Obtener una conexión
-        const connection = await MySqlConnection.getConnection();
 
         // Llamar al procedimiento almacenado
-        const query = 'CALL ValidateLogin(?, ?, @OutResultCode)';
+        const sql = 'CALL ValidateLogin(?, ?, @OutResultCode)';
         const params = [usuario, contrasena];
-        await connection.execute(query, params);
+        const [result] = await MySqlConnection.execute(sql, params);
 
         // Obtener el resultado del procedimiento almacenado
-        const [rows] = await connection.query('SELECT @OutResultCode AS result_code');
-
-        // Liberar la conexión
-        connection.release();
+        const [rows] = await MySqlConnection.query('SELECT @OutResultCode AS result_code');
 
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
         console.log("Resultado: ", resultCode);
-
+        print("Resultado: ", resultCode);
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
