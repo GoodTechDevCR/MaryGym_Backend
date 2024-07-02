@@ -12,6 +12,9 @@ import RouterTipoTransaccion from "./routers/rtTipoTransaccion/RouterTipoTransac
 import RouterPago from "./routers/rtPago/RouterPago.js";
 import RouterAbono from './routers/rtAbono/RouterAbono.js';
 
+// Importa el archivo CobrosVencidos.js para que se ejecute
+import './services/CobrosVencidos.js';
+
 const app = express();
 app.use(express.json());
 // Permitir solicitudes desde el origen de tu frontend
@@ -21,7 +24,7 @@ app.use(cors({
 }));
 
 app.listen(PORT, () => {
-    console.log("Server on port ",PORT);
+    console.log("Server on port ", PORT);
 });
 
 app.get('/', (req, res) => {

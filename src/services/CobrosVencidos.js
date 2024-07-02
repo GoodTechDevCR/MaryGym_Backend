@@ -1,16 +1,15 @@
-const cron = require('node-cron');
-const mysql = require('mysql2/promise');
-
+import cron from 'node-cron';
+import mysql from 'mysql2/promise';
 import { 
     DB_HOST,
     DB_NAME,
     DB_PASSWORD,
     DB_USER,
     DB_PORT
- } from '../config/ConfiguracionInicial.js'
+} from '../config/ConfiguracionInicial.js';
 
 // función para ejecutar el procedimiento almacenado de eliminar cobros vencidos 
-async function eliminarCobrosVencidos() {
+export async function eliminarCobrosVencidos() {
     const connection = await mysql.createConnection({
         host: DB_HOST,
         user: DB_USER,
