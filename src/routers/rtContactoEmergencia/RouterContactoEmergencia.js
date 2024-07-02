@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { createContactoEme } from '../../controllers/ctrContactoEmergencia/CreateContactoEme.js';
+import { createContactoEme, createContactoEmeUnico} from '../../controllers/ctrContactoEmergencia/CreateContactoEme.js';
 
 import { consultContactoEmergencia } from '../../controllers/ctrContactoEmergencia/ConsultContactoEme.js';
 
@@ -15,6 +15,9 @@ router.get('/:id?', consultContactoEmergencia);
 
 //solicitud de tipo post para crear los contactos de emergencia
 router.post('/', createContactoEme);
+
+//solicitud de tipo post para crear UN SOLO contacto emergencia
+router.post('/unico', createContactoEmeUnico);
 
 //solicitud de tipo delete para borrar los contactos de emergencia
 router.delete('/:id', deleteContactoEme);

@@ -7,9 +7,11 @@ export const createContactoEme = async (req, res) => {
     // El SQL de llamada al procedimiento almacenado
     const sql = 'CALL ContactoEmergenciaCreate(?, ?, ?, ?)';
 
+    let connection;  // Declarar la conexión fuera del bloque try
+
     try {
         // Crear una conexión de transacción
-        const connection = await MySqlConnection.getConnection();
+        connection = await MySqlConnection.getConnection();
         await connection.beginTransaction();
 
         for (const contacto of contactos) {
@@ -26,6 +28,19 @@ export const createContactoEme = async (req, res) => {
             await connection.rollback();
             connection.release();
         }
+        res.status(500).send(err.message);
+    }
+};
+
+
+// Controlador para crear un pago
+export const createContactoEmeUnico= async (req, res) => {
+    const { IdUsuario, Nombre, NumeroTelefono, Relacion } = req.body;
+    const sql = 'CALL ContactoEmergenciaCreate(?, ?, ?, ?)';
+    try {
+        const [result] = await MySqlConnection.execute(sql, [IdUsuario, Nombre, NumeroTelefono, Relacion]);
+        res.send('Contacto emergencia creado');
+    } catch (err) {
         res.status(500).send(err.message);
     }
 };
