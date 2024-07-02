@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
 
-import {validate} from "../../controllers/ctrLogin/validateLogin.js";
+import {validateLogin} from "../../controllers/ctrLogin/validateLogin.js";
 
 //ruta para iniciar sesion
-router.post('/validate', validate);
+router.post('/validate', validateLogin);
 
 export default router;

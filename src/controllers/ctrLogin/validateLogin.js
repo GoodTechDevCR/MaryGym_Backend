@@ -9,46 +9,38 @@ export const validateLogin = async (req, res) => {
 
     console.log('Datos recibidos del cliente:', { usuario, contrasena });
 
-    let connection;
-
     try {
-        connection = await MySqlConnection.getConnection();
+        // Obtener una conexión
+        const connection = await MySqlConnection.getConnection();
 
         // Llamar al procedimiento almacenado
         const query = 'CALL ValidateLogin(?, ?, @OutResultCode)';
         const params = [usuario, contrasena];
-        await connection.query(query, params);
+        await connection.execute(query, params);
 
         // Obtener el resultado del procedimiento almacenado
-        const resultQuery = 'SELECT @OutResultCode AS result_code';
-        const [rows] = await connection.query(resultQuery);
+        const [rows] = await connection.query('SELECT @OutResultCode AS result_code');
 
-        // Comprobar la estructura de las filas devueltas
-        console.log('Rows devueltas:', rows);
+        // Liberar la conexión
+        connection.release();
 
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
-        console.log('Resultado:', resultCode);
+        console.log("Resultado: ", resultCode);
 
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
-                res.status(200).json({ alert: 'success', message: 'Login exitoso' });
-                break;
+                return res.status(200).json({ alert: 'success', message: 'Login exitoso' });
             case 506:
-                res.status(401).json({ alert: 'error', message: 'El usuario no existe jeje' });
-                break;
+                return res.status(401).json({ alert: 'error', message: 'El usuario no existeAAAA' });
             case 507:
-                res.status(401).json({ alert: 'error', message: 'La contraseña es incorrecta' });
-                break;
+                return res.status(401).json({ alert: 'error', message: 'La contraseña es incorrecta' });
             default:
-                res.status(500).json({ alert: 'error', message: 'Error desconocido' });
-                break;
+                return res.status(500).json({ alert: 'error', message: 'Error desconocido' });
         }
     } catch (error) {
         console.error('Error en el login:', error);
-        res.status(500).json({ alert: 'error', message: 'Error en el servidor' });
-    } finally {
-        if (connection) connection.release();
+        return res.status(500).json({ alert: 'error', message: 'Error en el servidor' });
     }
 };
