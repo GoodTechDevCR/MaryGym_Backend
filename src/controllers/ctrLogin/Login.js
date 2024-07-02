@@ -1,7 +1,7 @@
 import { MySqlConnection } from '../../database/DBConnection.js';
 
 export const validateLogin = async (req, res) => {
-    const { username, password } = req.body;
+    const { usuario, contrasena } = req.body;
 
     let connection;
 
@@ -10,23 +10,24 @@ export const validateLogin = async (req, res) => {
 
         // Llamar al procedimiento almacenado
         const query = 'CALL ValidateLogin(?, ?, @OutResultCode)';
-        const params = [username, password];
+        const params = [usuario, contrasena];
+        console.log(usuario);
         await connection.query(query, params);
 
         // Obtener el resultado del procedimiento almacenado
-        const resultQuery = 'SELECT @OutResultCode AS result_code';
+        const resultQuery = 'SELECT @OutResultCode';
         const [rows] = await connection.query(resultQuery);
 
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
-
+        console.log(resultCode);
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
                 res.status(200).json({ alert: 'success', message: 'Login exitoso' });
                 break;
             case 506:
-                res.status(401).json({ alert: 'error', message: 'El usuario no existe' });
+                res.status(401).json({ alert: 'error', message: 'El AAA no existe' });
                 break;
             case 507:
                 res.status(401).json({ alert: 'error', message: 'La contraseña es incorrecta' });
