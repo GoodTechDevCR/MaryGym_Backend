@@ -12,6 +12,7 @@ import RouterTipoTransaccion from "./routers/rtTipoTransaccion/RouterTipoTransac
 import RouterPago from "./routers/rtPago/RouterPago.js";
 import RouterLogin from "./routers/rtLogin/RouterLogin.js";
 import RouterServicioApi from "./routers/rtServicioAPI/RouterServicioApi.js"
+import RouterContactoEmergencia from "./routers/rtContactoEmergencia/RouterContactoEmergencia.js"
 import RouterAbono from './routers/rtAbono/RouterAbono.js';
 
 // Importa el archivo CobrosVencidos.js para que se ejecute
@@ -51,6 +52,9 @@ app.use('/ejercicio', RouterEjercicio);
 app.use('/catEje', RouterCatEje);
 app.use('/tipoTran', RouterTipoTransaccion);
 app.use('/pago', RouterPago);
+app.use('/servicioAPI', RouterServicioApi);
+app.use('/contactoEme', RouterContactoEmergencia);
 app.use('/login', RouterLogin);
 app.use('/servicioAPI', RouterServicioApi);
 app.use('/abono', RouterAbono);
+

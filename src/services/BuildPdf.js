@@ -22,9 +22,10 @@ export const buildPDF = async (jsonData, dataCallback, endCallback) => {
         // Imprime los datos del JSON en el PDF
         doc.fontSize(12);
         doc.text(`Nombre de Usuario: ${jsonData.usuario}`);
-        doc.text(`Fecha de Inicio: ${jsonData.fechaInicio}`);
-        doc.text(`Fecha de Fin: ${jsonData.fechaFin}`);
-        doc.text(`Cantidad de Semanas: ${jsonData.cantSemana}`);
+        doc.text(`Fecha de Pago: ${jsonData.fechaPago}`);
+        doc.text(`Fecha de Inicio de la rutina: ${jsonData.fechaInicio}`);
+        doc.text(`Fecha de Fin de la rutina: ${jsonData.fechaFin}`);
+        doc.text(`Cantidad de Semanas de la rutina: ${jsonData.cantSemana}`);
         doc.moveDown(3.0); // Añade un espacio de 3 líneas después de los datos del JSON
     };
 
