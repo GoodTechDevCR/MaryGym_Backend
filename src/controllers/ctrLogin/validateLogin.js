@@ -25,7 +25,7 @@ export const validateLogin = async (req, res) => {
 
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
-
+        console.log("Resultado: ", resultCode);
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
