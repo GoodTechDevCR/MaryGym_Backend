@@ -22,13 +22,12 @@ export const validateLogin = async (req, res) => {
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
         console.log("Resultado: ", resultCode);
-        print("Resultado: ", resultCode);
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {
             case 1:
                 return res.status(200).json({ alert: 'success', message: 'Login exitoso' });
             case 506:
-                return res.status(401).json({ alert: 'error', message: 'El usuario no existeAAAA' });
+                return res.status(401).json({ alert: 'error', message: 'El usuario no existe' });
             case 507:
                 return res.status(401).json({ alert: 'error', message: 'La contraseña es incorrecta' });
             default:
