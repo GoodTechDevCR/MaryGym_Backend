@@ -12,7 +12,11 @@ import RouterTipoTransaccion from "./routers/rtTipoTransaccion/RouterTipoTransac
 import RouterPago from "./routers/rtPago/RouterPago.js";
 import RouterLogin from "./routers/rtLogin/RouterLogin.js";
 import RouterServicioApi from "./routers/rtServicioAPI/RouterServicioApi.js"
+import RouterContactoEmergencia from "./routers/rtContactoEmergencia/RouterContactoEmergencia.js"
+import RouterAbono from './routers/rtAbono/RouterAbono.js';
 
+// Importa el archivo CobrosVencidos.js para que se ejecute
+import './services/CobrosVencidos.js';
 
 const app = express();
 app.use(express.json());
@@ -23,7 +27,7 @@ app.use(cors({
 }));
 
 app.listen(PORT, () => {
-    console.log("Server on port ",PORT);
+    console.log("Server on port ", PORT);
 });
 
 app.get('/', (req, res) => {
@@ -48,5 +52,9 @@ app.use('/ejercicio', RouterEjercicio);
 app.use('/catEje', RouterCatEje);
 app.use('/tipoTran', RouterTipoTransaccion);
 app.use('/pago', RouterPago);
+app.use('/servicioAPI', RouterServicioApi);
+app.use('/contactoEme', RouterContactoEmergencia);
 app.use('/login', RouterLogin);
 app.use('/servicioAPI', RouterServicioApi);
+app.use('/abono', RouterAbono);
+
