@@ -17,7 +17,7 @@ import RouterAbono from './routers/rtAbono/RouterAbono.js';
 
 // Archivos de Cron para que se ejecuten periodicamente
 import './services/CobrosVencidos.js';
-import './services/CumpleanosRecordatorio.js';
+import './services/CumpleRecordatorio.js';
 
 const app = express();
 app.use(express.json());
