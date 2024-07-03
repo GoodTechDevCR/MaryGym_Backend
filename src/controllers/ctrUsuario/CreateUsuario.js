@@ -20,8 +20,11 @@ export const createUsuario = async (req, res) => {
         switch (resultCode) {
             case 1:
                 res.status(200).json({ alert: 'success', message: 'Usuario creado exitosamente' });
-                res.send('Usuario creado');
-                EnvioCorreo(Correo, Nombre, Apellido).catch(console.error);
+                try {
+                    await EnvioCorreo(Correo, Nombre, Apellido);
+                } catch (error) {
+                    console.error(error);
+                }
                 break;
             case 508:
                 res.status(400).json({ alert: 'error', message: 'Ya existe un usuario registrado con ese correo' });
