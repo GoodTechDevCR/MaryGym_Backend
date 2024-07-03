@@ -15,8 +15,9 @@ import RouterServicioApi from "./routers/rtServicioAPI/RouterServicioApi.js"
 import RouterContactoEmergencia from "./routers/rtContactoEmergencia/RouterContactoEmergencia.js"
 import RouterAbono from './routers/rtAbono/RouterAbono.js';
 
-// Importa el archivo CobrosVencidos.js para que se ejecute
+// Archivos de Cron para que se ejecuten periodicamente
 import './services/CobrosVencidos.js';
+import './services/CumpleanosRecordatorio.js';
 
 const app = express();
 app.use(express.json());
