@@ -3,40 +3,25 @@
 --  SP para insertar un usuario
 
 DELIMITER //
-
-CREATE DEFINER = marygym@`%` PROCEDURE UsuarioCreate(
-    IN p_Nombre VARCHAR(255),
-    IN p_Apellido VARCHAR(255),
-    IN p_Password VARCHAR(255),
-    IN p_Telefono VARCHAR(255),
-    IN p_Correo VARCHAR(255),
-    IN p_Saldo DOUBLE,
-    IN p_Estado TINYINT,
-    IN p_FechaNacimiento DATE,
-    OUT OutResulTCode int
-)
+create
+    definer = marygym@`%` procedure UsuarioCreate(IN p_Nombre varchar(255), IN p_Apellido varchar(255),
+                                                  IN p_Password varchar(255), IN p_Telefono varchar(255),
+                                                  IN p_Correo varchar(255), IN p_Estado tinyint,
+                                                  IN p_FechaNacimiento date, OUT OutResulTCode int)
 BEGIN
-    DECLARE v_UserId INT;
-
     -- Inicializar variable de salida
     SET OutResulTCode = 0;
 
     -- Verificar si el correo ya existe
     IF EXISTS (SELECT 1 FROM Usuario WHERE Correo = p_Correo) THEN
         SET OutResulTCode = 508; -- Ya existe un usuario registrado con ese correo
-
+        SELECT CONCAT('Error: Ya existe un usuario registrado con el correo ', p_Correo) AS ErrorMessage;
     ELSE
         SET OutResulTCode = 1; -- No existe ningún usuario con dicho correo, por lo tanto se crea
         -- Insertar el nuevo usuario
-        INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Saldo, Estado, FechaNacimiento)
-        VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Saldo, p_Estado, p_FechaNacimiento);
-
-        -- Obtener el ID del nuevo usuario insertado
-        SELECT LAST_INSERT_ID() INTO v_UserId;
+        INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, UltimoPago)
+        VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Estado, p_FechaNacimiento, NULL); -- O con un valor predeterminado si es aplicable
     END IF;
-
-    -- Devolver el ID del usuario insertado (si es necesario)
-    SELECT v_UserId AS IdUsuario;
 END;
  //
 

@@ -73,6 +73,12 @@ INSERT INTO TipoTransaccion (TipoTran) VALUES
 ('Membresia un dia'),
 ('Precio Especial');
 
+------------------------------------------
+CREATE TABLE rutinaXusuario (
+  IdUsuario INT PRIMARY KEY,
+  IdRutina INT,
+  Json JSON
+);
 
 
 create table ContactoEmergencia(
