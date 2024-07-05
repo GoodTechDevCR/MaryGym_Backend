@@ -6,4 +6,6 @@ import {createRutinaXUsuario} from "../../controllers/ctrRutinaXUsuario/createRu
 //ruta para crear un pago
 router.post('/', createRutinaXUsuario);
 
+//router.get('/', createRutinaXUsuario);
+
 export default router;
