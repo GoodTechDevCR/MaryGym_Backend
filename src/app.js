@@ -1,6 +1,7 @@
 import express from 'express';
 import { MySqlConnection } from './database/DBConnection.js';
 import { PORT } from './config/ConfiguracionInicial.js';
+import { DB_PORT } from './config/ConfiguracionInicial.js';
 import cors from 'cors';
 
 import RouterEjercicio from "./routers/rtEjercicio/RouterEjercicio.js";
@@ -29,6 +30,7 @@ app.use(cors({
 
 app.listen(PORT, () => {
     console.log("Server on port ", PORT);
+    console.log("mysql port: ", DB_PORT);
 });
 
 app.get('/', (req, res) => {
