@@ -64,3 +64,30 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE cobroconsultabyusuario(IN userId INT)
+BEGIN
+    DECLARE fechaFinal DATE;
+    DECLARE noPagoMessage VARCHAR(255);
+
+    -- Initialize the no payment message
+    SET noPagoMessage = 'No hay un pago asignado, contactar administradora';
+
+    -- Select the FechaFinal for the given userId
+    SELECT c.FechaFinal INTO fechaFinal
+    FROM cobro c
+    WHERE c.IdUsuario = userId
+    LIMIT 1;
+
+    -- Check if a FechaFinal was found
+    IF fechaFinal IS NULL THEN
+        SELECT noPagoMessage AS Mensaje;
+    ELSE
+        SELECT fechaFinal AS FechaFinal;
+    END IF;
+END //
+
+DELIMITER ;
