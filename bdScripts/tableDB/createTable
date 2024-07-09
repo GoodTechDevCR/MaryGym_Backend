@@ -10,7 +10,7 @@ CREATE TABLE Usuario (
   Estado BOOLEAN,
   FechaNacimiento DATE,
   Comentario VARCHAR (2048),
-  AceptacionTC bit
+  AceptacionTC BOOLEAN
 );
 
 //para el manejo de numeros de telefono
