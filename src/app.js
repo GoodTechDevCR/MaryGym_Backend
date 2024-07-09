@@ -1,6 +1,7 @@
 import express from 'express';
 import { MySqlConnection } from './database/DBConnection.js';
 import { PORT } from './config/ConfiguracionInicial.js';
+import { DB_PORT } from './config/ConfiguracionInicial.js';
 import cors from 'cors';
 
 import RouterEjercicio from "./routers/rtEjercicio/RouterEjercicio.js";
@@ -16,8 +17,9 @@ import RouterContactoEmergencia from "./routers/rtContactoEmergencia/RouterConta
 import RouterAbono from './routers/rtAbono/RouterAbono.js';
 import RouterRutinaXUsuario from "./routers/rtRutinaXUsuario/RouterRutinaXUsuario.js";
 
-// Importa el archivo CobrosVencidos.js para que se ejecute
+// Archivos de Cron para que se ejecuten periodicamente
 import './services/CobrosVencidos.js';
+import './services/CumpleRecordatorio.js';
 
 const app = express();
 app.use(express.json());
@@ -29,6 +31,7 @@ app.use(cors({
 
 app.listen(PORT, () => {
     console.log("Server on port ", PORT);
+    console.log("mysql port: ", DB_PORT);
 });
 
 app.get('/', (req, res) => {
