@@ -30,6 +30,19 @@ export async function EnvioCorreo(correoElectronico, nombre, apellido) {
     // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
+export async function EnvioCorreoCumpleanosAdmin(adminEmail, usuarios) {
+    const usuarioInfo = usuarios.map(usuario => 
+        `Nombre: ${usuario.nombre} ${usuario.apellido}, Teléfono: ${usuario.telefono}, Correo: ${usuario.correo}, Fecha de nacimiento: ${new Date(usuario.fechanacimiento).toLocaleDateString()}`
+    ).join("\n");
 
+    const info = await transporterEmail.sendMail({
+        from: '"Recordatorio de Cumpleaños" <goodtechdevcr@gmail.com>',
+        to: adminEmail,
+        subject: "Recordatorio de Cumpleaños Próximos",
+        text: `Estos usuarios tienen cumpleaños próximos:\n\n${usuarioInfo}`
+    });
+
+    console.log("Birthday reminder sent: %s", info.messageId);
+}
 
 
