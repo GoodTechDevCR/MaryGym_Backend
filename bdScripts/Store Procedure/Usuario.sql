@@ -7,7 +7,8 @@ create
     definer = marygym@`%` procedure UsuarioCreate(IN p_Nombre varchar(255), IN p_Apellido varchar(255),
                                                   IN p_Password varchar(255), IN p_Telefono varchar(255),
                                                   IN p_Correo varchar(255), IN p_Estado tinyint,
-                                                  IN p_FechaNacimiento date, OUT OutResulTCode int)
+                                                  IN p_FechaNacimiento date, IN p_Comentario VARCHAR (2048),
+                                                  OUT OutResulTCode int)
 BEGIN
     -- Inicializar variable de salida
     SET OutResulTCode = 0;
@@ -19,10 +20,12 @@ BEGIN
     ELSE
         SET OutResulTCode = 1; -- No existe ningún usuario con dicho correo, por lo tanto se crea
         -- Insertar el nuevo usuario
-        INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, UltimoPago)
-        VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Estado, p_FechaNacimiento, NULL); -- O con un valor predeterminado si es aplicable
+        INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, UltimoPago, Comentario, AceptacionTC)
+        VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Estado, p_FechaNacimiento, NULL, p_Comentario, 0); -- O con un valor predeterminado si es aplicable
     END IF;
 END;
+
+
  //
 
 DELIMITER ;

@@ -8,7 +8,9 @@ CREATE TABLE Usuario (
   Correo VARCHAR(255),
   Saldo DOUBLE,
   Estado BOOLEAN,
-  FechaNacimiento DATE
+  FechaNacimiento DATE,
+  Comentario VARCHAR (2048),
+  AceptacionTC bit
 );
 
 //para el manejo de numeros de telefono
