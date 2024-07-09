@@ -1,36 +1,31 @@
 
 DELIMITER //
-create
-    definer = marygym@`%` procedure ValidateLogin(IN usuario varchar(255), IN contrasena varchar(255),
-                                                  OUT OutResulTCode int)
+CREATE DEFINER = marygym@`%` PROCEDURE UsuarioCreate(
+    IN p_Nombre VARCHAR(255),
+    IN p_Apellido VARCHAR(255),
+    IN p_Password VARCHAR(255),
+    IN p_Telefono VARCHAR(255),
+    IN p_Correo VARCHAR(255),
+    IN p_Estado TINYINT,
+    IN p_FechaNacimiento DATE,
+    OUT OutResulTCode INT
+)
 BEGIN
-    DECLARE tempUserId INT;
-    DECLARE storedPassword VARCHAR(255);
-
     -- Inicializar variable de salida
     SET OutResulTCode = 0;
 
-    -- Validar si el usuario existe
-    IF NOT EXISTS (SELECT 1 FROM Usuario WHERE Correo = usuario) THEN
-        SET OutResulTCode = 506; -- El correo no existe
-         -- Salir del procedimiento
+    -- Verificar si el correo ya existe
+    IF EXISTS (SELECT 1 FROM Usuario WHERE Correo = p_Correo) THEN
+        SET OutResulTCode = 508; -- Ya existe un usuario registrado con ese correo
+        SELECT CONCAT('Error: Ya existe un usuario registrado con el correo ', p_Correo) AS ErrorMessage;
     ELSE
-
-        -- Obtener la contraseña almacenada
-        SELECT IdUsuario, Password INTO tempUserId, storedPassword
-        FROM Usuario
-        WHERE Correo = usuario
-        LIMIT 1;
-
-        -- Verificar la contraseña
-        IF storedPassword = contrasena THEN
-            SET OutResulTCode = 1; -- Login exitoso
-            SELECT tempUserId AS IdUsuario; -- Imprimir el IdUsuario encontrado
-        ELSE
-            SET OutResulTCode = 507; -- La contraseña es incorrecta
-        END IF;
+        SET OutResulTCode = 1; -- No existe ningún usuario con dicho correo, por lo tanto se crea
+        -- Insertar el nuevo usuario
+        INSERT INTO Usuario (Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, UltimoPago)
+        VALUES (p_Nombre, p_Apellido, p_Password, p_Telefono, p_Correo, p_Estado, p_FechaNacimiento, NULL); -- O con un valor predeterminado si es aplicable
     END IF;
-END; //
+END;
+ //
 
 DELIMITER ;
 

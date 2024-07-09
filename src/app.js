@@ -15,6 +15,7 @@ import RouterLogin from "./routers/rtLogin/RouterLogin.js";
 import RouterServicioApi from "./routers/rtServicioAPI/RouterServicioApi.js"
 import RouterContactoEmergencia from "./routers/rtContactoEmergencia/RouterContactoEmergencia.js"
 import RouterAbono from './routers/rtAbono/RouterAbono.js';
+import RouterRutinaXUsuario from "./routers/rtRutinaXUsuario/RouterRutinaXUsuario.js";
 
 // Archivos de Cron para que se ejecuten periodicamente
 import './services/CobrosVencidos.js';
@@ -60,4 +61,5 @@ app.use('/contactoEme', RouterContactoEmergencia);
 app.use('/login', RouterLogin);
 app.use('/servicioAPI', RouterServicioApi);
 app.use('/abono', RouterAbono);
+app.use('/rutinaXusuario', RouterRutinaXUsuario);
 

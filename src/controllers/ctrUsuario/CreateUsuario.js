@@ -3,12 +3,12 @@ import { EnvioCorreo } from "../../services/EmailSender.js";
 
 // Controlador para Crear usuario
 export const createUsuario = async (req, res) => {
-    const { Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento } = req.body;
+    const { Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, Comentario } = req.body;
     console.log("holaaa");
-    const sql = 'CALL UsuarioCreate(?, ?, ?, ?, ?, ?, ?, @OutResultCode)';
+    const sql = 'CALL UsuarioCreate(?, ?, ?, ?, ?, ?, ?, ?, @OutResultCode)';
 
     try {
-        const [result] = await MySqlConnection.execute(sql, [Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento]);
+        const [result] = await MySqlConnection.execute(sql, [Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, Comentario]);
         // Obtener el resultado del procedimiento almacenado
         const [rows] = await MySqlConnection.query('SELECT @OutResultCode AS result_code');
 
