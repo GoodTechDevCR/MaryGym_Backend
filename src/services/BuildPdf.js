@@ -26,6 +26,9 @@ export const buildPDF = async (jsonData, dataCallback, endCallback) => {
         doc.text(`Fecha de Inicio de la rutina: ${jsonData.fechaInicio}`);
         doc.text(`Fecha de Fin de la rutina: ${jsonData.fechaFin}`);
         doc.text(`Cantidad de Semanas de la rutina: ${jsonData.cantSemana}`);
+        doc.moveDown(1.5); 
+        doc.text(`Antes de iniciar la rutina: ${jsonData.initialComment}`);
+        doc.text(`Al finalizar la rutina: ${jsonData.finalComment}`)
         doc.moveDown(3.0); // Añade un espacio de 3 líneas después de los datos del JSON
     };
 
