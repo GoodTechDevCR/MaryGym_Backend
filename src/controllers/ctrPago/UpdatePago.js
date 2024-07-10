@@ -2,8 +2,12 @@ import { MySqlConnection } from "../../database/DBConnection.js";
 
 export const updatePago = async (req, res) => {
     const { idRegistro, nombreColumna, nuevoValor } = req.body;
-    const nombreTabla = 'Pago'; // Dejar esto fijo y modificarlo según sea necesario
+    const nombreTabla = 'pago'; // Dejar esto fijo y modificarlo según sea necesario
     let connection;
+
+    console.log(idRegistro);
+    console.log(nombreColumna);
+    console.log(nuevoValor);
 
     try {
         connection = await MySqlConnection.getConnection();
@@ -12,8 +16,8 @@ export const updatePago = async (req, res) => {
         await connection.execute(query, params);
         res.status(200).send('Registro actualizado exitosamente');
     } catch (error) {
-        console.error('Error al actualizar el registro:', error);
-        res.status(500).send('Error en el servidor');
+        console.error('Error al actualizar el registro:', error.message);
+        res.status(500).send('Error en el servidor pruebas');
     } finally {
         if (connection) connection.release();
     }
