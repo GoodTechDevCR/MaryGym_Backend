@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
 
-import {createPago} from "../../controllers/ctrPago/CreatePago.js";
-import {consultPago, consultPagoPorID} from "../../controllers/ctrPago/ConsultPago.js";
-import {deletePago} from "../../controllers/ctrPago/DeletePago.js";
-import {updatePago} from "../../controllers/ctrPago/UpdatePago.js";
+import { createPago } from "../../controllers/ctrPago/CreatePago.js";
+import { consultPago, consultPagoPorID } from "../../controllers/ctrPago/ConsultPago.js";
+import { deletePago } from "../../controllers/ctrPago/DeletePago.js";
+import { updatePago } from "../../controllers/ctrPago/UpdatePago.js";
 
 // Router para Consultar pago por medio de un ID
 router.get('/pagoprueba/:idPago', consultPagoPorID);
