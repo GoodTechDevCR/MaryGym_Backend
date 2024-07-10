@@ -15,3 +15,25 @@ END;
  //
 
 DELIMITER ;
+
+DELIMITER //
+create
+    definer = marygym@`%` procedure RutinaXUsuarioConsult(IN p_IdUsuario int)
+BEGIN
+    IF p_IdUsuario = 0 THEN
+        SELECT
+            IdUsuario,
+            IdRutina,
+            Json
+        FROM rutinaxusuario;
+    ELSE
+        SELECT
+            IdUsuario,
+            IdRutina,
+            Json
+        FROM rutinaxusuario WHERE IdUsuario = p_IdUsuario;
+    END IF;
+END;
+ //
+
+DELIMITER ;

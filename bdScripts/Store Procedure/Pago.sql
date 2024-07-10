@@ -75,3 +75,65 @@ BEGIN
 END //
 
 DELIMITER ;
+
+DELIMITER //
+create
+    definer = root@`%` procedure PagoByIdConsult(IN p_IdPago int)
+BEGIN
+
+    IF p_IdPago = 0 THEN
+
+        SELECT
+
+            IdPago,
+
+            pago.IdUsuario,
+
+            CONCAT(u.Nombre, ' ' ,u.Apellido) as NombreUsuario,
+
+            pago.Monto,
+
+            FechaPago,
+
+            pago.IdTipoTran,
+
+            tt.TipoTran
+
+        FROM pago
+
+        INNER JOIN tipotransaccion tt ON pago.IdTipoTran = tt.IdTipoTran
+
+        INNER JOIN usuario u ON pago.IdUsuario = u.IdUsuario;
+
+    ELSE
+
+        SELECT
+
+            IdPago,
+
+            pago.IdUsuario,
+
+            CONCAT(u.Nombre, ' ' ,u.Apellido) as NombreUsuario,
+
+            pago.Monto,
+
+            FechaPago,
+
+            pago.IdTipoTran,
+
+            tt.TipoTran
+
+        FROM pago
+
+        INNER JOIN tipotransaccion tt ON pago.IdTipoTran = tt.IdTipoTran
+
+        INNER JOIN usuario u ON pago.IdUsuario = u.IdUsuario
+
+        WHERE pago.IdPago = p_IdPago;
+
+    END IF;
+
+END;//
+
+DELIMITER ;
+
