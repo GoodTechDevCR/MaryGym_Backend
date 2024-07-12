@@ -78,7 +78,6 @@ INSERT INTO TipoTransaccion (TipoTran) VALUES
 ------------------------------------------
 CREATE TABLE rutinaXusuario (
   IdUsuario INT PRIMARY KEY,
-  IdRutina INT,
   Json JSON
 );
 

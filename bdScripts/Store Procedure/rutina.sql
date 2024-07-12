@@ -2,15 +2,13 @@
 DELIMITER //
 
 -- sp para insertar las rutinas que se le van asignando a los usuarios
-CREATE DEFINER = marygym@`%` PROCEDURE InsertarRutinaXUsuario(
-    IN p_IdUsuario INT,
-    IN p_IdRutina INT,
-    IN p_Json TEXT
-)
+create
+    definer = root@`%` procedure InsertarRutinaXUsuario(IN p_IdUsuario int, IN p_Json text)
 BEGIN
-    -- Insertar una nueva rutina para el usuario
-    INSERT INTO rutinaXusuario (IdUsuario, IdRutina, Json)
-    VALUES (p_IdUsuario, p_IdRutina, p_Json);
+    -- Insertar o actualizar la rutina del usuario
+    INSERT INTO rutinaxusuario (IdUsuario, Json)
+    VALUES (p_IdUsuario, p_Json)
+    ON DUPLICATE KEY UPDATE Json = p_Json;
 END;
  //
 
@@ -23,13 +21,11 @@ BEGIN
     IF p_IdUsuario = 0 THEN
         SELECT
             IdUsuario,
-            IdRutina,
             Json
         FROM rutinaxusuario;
     ELSE
         SELECT
             IdUsuario,
-            IdRutina,
             Json
         FROM rutinaxusuario WHERE IdUsuario = p_IdUsuario;
     END IF;
