@@ -23,9 +23,17 @@ import './services/CumpleRecordatorio.js';
 
 const app = express();
 app.use(express.json());
-// Permitir solicitudes desde el origen de tu frontend
+
+// Configuración de CORS
+const allowedOrigins = ['https://marygym.netlify.app', 'http://localhost:3000'];
 app.use(cors({
-    origin: 'https://marygym.netlify.app/', // Reemplaza con la URL de tu frontend
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('No permitido por CORS'));
+        }
+    },
     credentials: true,
 }));
 
@@ -62,4 +70,3 @@ app.use('/login', RouterLogin);
 app.use('/servicioAPI', RouterServicioApi);
 app.use('/abono', RouterAbono);
 app.use('/rutinaXusuario', RouterRutinaXUsuario);
-
