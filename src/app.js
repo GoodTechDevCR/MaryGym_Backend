@@ -25,7 +25,7 @@ const app = express();
 app.use(express.json());
 // Permitir solicitudes desde el origen de tu frontend
 app.use(cors({
-    origin: 'http://localhost:3000', // Reemplaza con la URL de tu frontend
+    origin: 'https://marygym.netlify.app/', // Reemplaza con la URL de tu frontend
     credentials: true,
 }));
 
