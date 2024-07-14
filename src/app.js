@@ -24,7 +24,7 @@ import './services/CumpleRecordatorio.js';
 const app = express();
 app.use(express.json());
 
-// Configuración de CORS
+// Configuración de CORS para la aceptacion de url de desarrollo y de servidor
 const allowedOrigins = ['https://marygym.netlify.app', 'http://localhost:3000'];
 app.use(cors({
     origin: (origin, callback) => {
