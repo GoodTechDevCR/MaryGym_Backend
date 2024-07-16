@@ -14,6 +14,7 @@ transporterEmail.verify().then(() => {
     console.log("Ready to send emails");
 });
 
+//actualizacion de la url del email del correo
 export async function EnvioCorreo(correoElectronico, nombre, apellido) {
     // Send mail with defined transport object
     const info = await transporterEmail.sendMail({
@@ -21,7 +22,7 @@ export async function EnvioCorreo(correoElectronico, nombre, apellido) {
         to: correoElectronico, // List of receivers
         subject: "Cambio Contrasena MaryGym", // Subject line
         text: `Hola ${nombre} ${apellido}, Esperemos que estes bien!
-        Accede por favor al siguiente link para su cambio de contrasena: http://localhost:3000/usuario/passwordChange/${correoElectronico} 
+        Accede por favor al siguiente link para su cambio de contrasena: https://marygym.netlify.app/usuario/passwordChange/${correoElectronico} 
         Te recordamos que actualmente cuentas con la contrasena default (123), por lo que para tener una mayor seguridad te incitamos al cambio.`
     });
 

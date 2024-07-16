@@ -7,8 +7,6 @@ export const validateLogin = async (req, res) => {
         return res.status(400).json({ alert: 'error', message: 'Usuario y contraseña son requeridos' });
     }
 
-    console.log('Datos recibidos del cliente:', { usuario, contrasena });
-
     try {
         // Llamar al procedimiento almacenado
         const sql = 'CALL ValidateLogin(?, ?, @OutResultCode)';
@@ -19,8 +17,7 @@ export const validateLogin = async (req, res) => {
         const [rows] = await MySqlConnection.query('SELECT @OutResultCode AS result_code');
 
         // Obtener el resultado del código de resultado
-        const resultCode = rows[0].result_code;
-        console.log("Resultado: ", resultCode);
+        const resultCode = rows[0].result_code; 
 
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {

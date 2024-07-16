@@ -6,7 +6,6 @@ const router = express.Router();
 router.post("/generarPDF", (req, res) => {
     const jsonData = req.body;
     const { usuario } = jsonData;  // Obtén el valor de usuario del JSON
-    console.log("usuario usuario: ", usuario);
 
     // Asegúrate de que `usuario` tenga un valor válido
     if (!usuario) {

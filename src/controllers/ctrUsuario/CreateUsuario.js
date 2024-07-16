@@ -4,7 +4,6 @@ import { EnvioCorreo } from "../../services/EmailSender.js";
 // Controlador para Crear usuario
 export const createUsuario = async (req, res) => {
     const { Nombre, Apellido, Password, Telefono, Correo, Estado, FechaNacimiento, Comentario } = req.body;
-    console.log("holaaa");
     const sql = 'CALL UsuarioCreate(?, ?, ?, ?, ?, ?, ?, ?, @OutResultCode)';
 
     try {
@@ -14,7 +13,6 @@ export const createUsuario = async (req, res) => {
 
         // Obtener el resultado del código de resultado
         const resultCode = rows[0].result_code;
-        console.log("Resultado: ", resultCode);
 
         // Manejar el resultado y enviar la respuesta correspondiente
         switch (resultCode) {

@@ -5,10 +5,6 @@ export const updatePago = async (req, res) => {
     const nombreTabla = 'pago'; // Dejar esto fijo y modificarlo según sea necesario
     let connection;
 
-    console.log(idRegistro);
-    console.log(nombreColumna);
-    console.log(nuevoValor);
-
     try {
         connection = await MySqlConnection.getConnection();
         const query = 'CALL UpdateAnything(?, ?, ?, ?)';
