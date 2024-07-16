@@ -22,7 +22,7 @@ export async function EnvioCorreo(correoElectronico, nombre, apellido) {
         to: correoElectronico, // List of receivers
         subject: "Cambio Contrasena MaryGym", // Subject line
         text: `Hola ${nombre} ${apellido}, Esperemos que estes bien!
-        Accede por favor al siguiente link para su cambio de contrasena: https://marygym.netlify.app/usuario/passwordChange/${correoElectronico} 
+        Accede por favor al siguiente link para su cambio de contrasena: https://marygymfrontend-production.up.railway.app/usuario/passwordChange/${correoElectronico} 
         Te recordamos que actualmente cuentas con la contrasena default (123), por lo que para tener una mayor seguridad te incitamos al cambio.`
     });
 
