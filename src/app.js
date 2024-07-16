@@ -25,7 +25,7 @@ const app = express();
 app.use(express.json());
 
 // Configuración de CORS para la aceptacion de url de desarrollo y de servidor
-const allowedOrigins = ['https://marygym.netlify.app', 'http://localhost:3000'];
+const allowedOrigins = ['https://marygym.netlify.app', 'http://localhost:3000', 'https://marygymfrontend-production.up.railway.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if (allowedOrigins.includes(origin) || !origin) {
