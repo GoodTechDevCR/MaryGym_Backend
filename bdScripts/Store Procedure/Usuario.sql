@@ -53,36 +53,69 @@ DELIMITER ;
 DELIMITER //
 
 create
-    definer = marygym@`%` procedure UsuarioConsult(IN p_IdUsuario int)
+    definer = root@`%` procedure UsuarioConsult(IN p_IdUsuario int)
 BEGIN
+
     IF p_IdUsuario = 0 THEN
+
         SELECT
+
             idusuario,
+
             nombre,
+
             apellido,
+            
+            password,
+
             telefono,
+
             correo,
+
             estado,
+
             fechanacimiento,
+
             UltimoPago,
+
             Comentario,
+
             AceptacionTC
-        FROM Usuario;
+
+        FROM usuario;
+
     ELSE
+
         SELECT
+
             idusuario,
+
             nombre,
+
             apellido,
+            
+            password,
+
             telefono,
+
             correo,
+
             estado,
+
             fechanacimiento,
+
             UltimoPago,
+
             Comentario,
+
             AceptacionTC
-        FROM Usuario WHERE IdUsuario = p_IdUsuario;
+
+        FROM usuario WHERE IdUsuario = p_IdUsuario;
+
     END IF;
+
 END;
+
 
  //
 
